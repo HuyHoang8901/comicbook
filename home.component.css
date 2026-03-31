@@ -1,0 +1,230 @@
+
+
+/* 📦 Layout chính */
+.container {
+  padding: 0 15px;
+  
+}
+
+/* banner */
+
+.anime-banner {
+  border: 4px solid #e0e0e0; 
+  border-radius: 15px; 
+  overflow: hidden; /* ẩn góc video tràn */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.9); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit:cover;
+}
+
+
+/*  Danh mục */
+.category-container {
+  width: 100%;
+  overflow: hidden; /* Chặn tràn khung hình */
+  padding: 10px 0;
+}
+
+/* Nút "TẤT CẢ EBOOK" */
+.category-button {
+  background: hsl(187, 93%, 48%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 16px;
+  transition: 0.3s;
+  margin-bottom: 12px;
+}
+.category-button:hover {
+  background: #0bbbf1;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(11, 187, 241, 0.4);
+}
+
+/* Danh mục con */
+.category-wrapper {
+  display: flex; /* Xếp hàng ngang */
+  overflow-x: auto; /* Cho phép vuốt ngang */
+  white-space: nowrap; /* Không cho phép nhảy dòng */
+  gap: 15px; /* Khoảng cách giữa các ô */
+  padding: 10px 15px; /* Padding để không bị mất bóng (box-shadow) */
+  
+  /* Ẩn thanh cuộn (scrollbar) để nhìn đẹp hơn trên mobile */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.category-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Định dạng cho từng ô danh mục */
+.category-item {
+  flex: 0 0 auto; /* Quan trọng: Không cho các ô bị co lại */
+  width: 140px; /* Độ rộng cố định cho mỗi ô trên mobile */
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 10px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+}
+
+.category-item img {
+  width: 70px; /* Chỉnh lại kích thước icon cho vừa vặn */
+  height: 70px;
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+
+.category-item p {
+  font-size: 11px; /* Chữ nhỏ lại một chút cho di động */
+  margin: 0;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+}
+
+/* Hiệu ứng khi được chọn (Active) */
+.category-item.active {
+  border-color: #00bcd4;
+  box-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
+}
+
+
+
+
+
+/*  E-book Card */
+.card {
+  border: 2px solid rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+}
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #007bff;
+  box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+}
+.card-img-top {
+  width: 95%;
+  height: 40vh;
+   object-fit: cover;        
+  object-position: top;  
+}
+.book-title {
+  font-size: 16px;
+  margin: 10px 0;
+  transition: 0.2s;
+}
+.book-title:hover {
+  color: #dc0000;
+  text-shadow: 0 0 5px rgba(220, 0, 0, 0.3);
+}
+
+/*  Giá */
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: red;
+}
+.old-price {
+  text-decoration: line-through;
+  color: gray;
+}
+.discount-badge {
+  background: #dc3545;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+/*  Câu nói  */
+.comic-quote-wrapper {
+  padding: 20px 0;
+  width: 100%;
+}
+
+.quote-card {
+  position: relative;
+  background: linear-gradient(180deg, #FFDB6D 0%, #FFC107 100%);
+  border-radius: 12px;
+  padding: 40px 60px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.red-accent {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 6px;
+  background-color: #D32F2F;
+  border-radius: 0 5px 5px 0;
+}
+
+.quote-icon {
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.quote-content {
+  text-align: center;
+  width: 100%;
+}
+
+.quote-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.quote-author {
+  font-size: 14px;
+  color: #444;
+  font-style: italic;
+  text-align: right;
+  margin: 0;
+}
+
+/* Hiệu ứng chuyển động mượt */
+.fade-in {
+  animation: fadeInEffect 1s ease-in-out;
+}
+
+@keyframes fadeInEffect {
+  from { opacity: 0.4; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+  .quote-card { padding: 30px 20px; }
+  .quote-text { font-size: 17px; }
+}

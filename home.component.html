@@ -1,0 +1,104 @@
+<div class="container">
+  <!-- Banner anime động -->
+  <div class="anime-banner my-3 ">
+    <video autoplay muted loop playsinline class="img-fluid banner-img">
+      <source src="/image/videoannime.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <!---Danh mục-->
+<div class="mt-3 category-container">
+    <div class="mt-3 text-start">
+      <button class="category-button" (click)="selectCategory('TẤT CẢ EBOOK')">
+        TẤT CẢ EBOOK
+      </button>
+
+    <div class="category-wrapper">
+  <div
+    class="category-item"
+    *ngFor="let category of categories.slice(1)"
+    [ngClass]="{
+      active: category.name === selectedCategory,
+      hide: selectedCategory && category.name !== selectedCategory && selectedCategory !== 'TẤT CẢ EBOOK'
+    }"
+    (click)="selectCategory(category.name)"
+  >
+    <img width="60%" src="{{ category.icon }}" alt="" />
+    <p>{{ category.name }}</p>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+
+  <!----EBOOK MỚI-->
+
+  <div class="row mb-3">
+    <div class="row row-cols-1 row-cols-lg-4 gy-3 gx-3">
+      <div class="col" *ngFor="let book of currentBooks">
+        <a href="" style="text-decoration: none" [routerLink]="['/book', book.id]">
+          <div class="card h-100">
+            <img class="card-img-top" src="{{ book.image }}" width="100%" alt="Title" />
+            <div class="card-body">
+              <h5 class="book-title">{{ book.title }}</h5>
+              <p class="card-text">Tác giả: {{ book.author }}</p>
+              <div class="price">
+                {{
+                discountPrice(book.price, book.discount).toLocaleString()
+                }}
+                đ
+                <span class="discount-badge">-{{ book.discount }}</span>
+              </div>
+              <div class="old-price">{{ book.price.toLocaleString() }} đ</div>
+              <div class="publish-date">
+                Năm xuất bản: {{ book.publishDate }}
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- phân trang -->
+  <nav>
+    <ul class="pagination justify-content-center" style="display: flex">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <button class="page-link" (click)="setCurrentPage(currentPage - 1)">
+          Previous
+        </button>
+      </li>
+      <li *ngFor="let page of getPagination()" class="page-item" [class.active]="currentPage === page"
+        [class.disabled]="page === '...'">
+        <button class="page-link" (click)="setCurrentPage(page)">
+          {{ page }}
+        </button>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <button class="page-link" (click)="setCurrentPage(currentPage + 1)">
+          Next
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- CÂU NÓI HAY - PHONG CÁCH TRUYỆN TRANH -->
+ <div class="comic-quote-wrapper mt-5">
+  <div class="quote-carousel">
+    <div *ngFor="let q of comicQuotes; let i = index" 
+         class="quote-item fade-in" 
+         [style.display]="currentQuoteIndex === i ? 'block' : 'none'">
+      
+      <div class="quote-card">
+        <div class="red-accent"></div>
+        <i class="fa-solid fa-quote-left quote-icon"></i>
+        
+        <div class="quote-content">
+          <p class="quote-text">{{ q.text }}</p>
+          <p class="quote-author">— {{ q.author }} —</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+</div>
